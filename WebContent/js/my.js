@@ -59,7 +59,7 @@ $(document).ready(function(){
       });
    });
 
-   $("#regist").click(function(){
+   $("#registBtn").click(function(){
 	   let id = $("#id").val();
 	   let password = $("#password").val();
 	   let name = $("#name").val();
