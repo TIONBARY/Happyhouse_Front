@@ -84,14 +84,33 @@ $(document).ready(function(){
    });
    const user_info=JSON.parse(localStorage.getItem($.cookie("id")));
    $(".user_info").html("<p>아이디 : <input type=text value="+user_info.id+" id=user_info_id></p>"
-         +"<p>비밀번호 : <input type=password value="+user_info.password+" id=user_info_id></p>"
-         +"<p>이름 : <input type=text value="+user_info.name+" id=user_info_id></p>"
-         +"<p>이메일 : <input type=text value="+user_info.email+" id=user_info_id></p>"
-         +"<p>나이 : <input type=text value="+user_info.age+" id=user_info_id></p>"
+         +"<p>비밀번호 : <input type=password value="+user_info.password+" id=user_info_password></p>"
+         +"<p>이름 : <input type=text value="+user_info.name+" id=user_info_name></p>"
+         +"<p>이메일 : <input type=text value="+user_info.email+" id=user_info_email></p>"
+         +"<p>나이 : <input type=text value="+user_info.age+" id=user_info_age></p>"
          );
    
    $("#user_info_button_ok").click(function () {
       location.href="index.html";
-   })
-
+   });
+ 
+   $("#user_info_button_edit").click(function(){
+	   let id = $("#user_info_id").val();
+	   let password = $("#user_info_password").val();
+	   let name = $("#user_info_name").val()
+	   let email = $("#user_info_email").val();
+	   let age = $("#user_info_age").val();
+	      
+	   const user  = {
+			   id: id,
+	           password: password,
+	           name: name,
+	           email: email,
+	           age: age,
+	   };
+	      
+	   localStorage.setItem(id, JSON.stringify(user));
+	   alert("회원정보 수정");
+	   location.href="index.html";
+   });
 });
