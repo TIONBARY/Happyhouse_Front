@@ -113,4 +113,10 @@ $(document).ready(function(){
 	   alert("회원정보 수정");
 	   location.href="index.html";
    });
+
+   $("#user_info_button_remove").click(function(){
+	   $.removeCookie("id");
+	   localStorage.removeItem(user_info.id);
+	   location.href="index.html";
+   });
 });
