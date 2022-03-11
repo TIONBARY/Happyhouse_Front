@@ -82,6 +82,7 @@ $(document).ready(function(){
       alert("회원가입 완료");
       location.href="index.html";
    });
+   
    const user_info=JSON.parse(localStorage.getItem($.cookie("id")));
    $(".user_info").html("<p>아이디 : <input type=text value="+user_info.id+" id=user_info_id></p>"
          +"<p>비밀번호 : <input type=password value="+user_info.password+" id=user_info_password></p>"
@@ -113,7 +114,7 @@ $(document).ready(function(){
 	   alert("회원정보 수정");
 	   location.href="index.html";
    });
-
+   
    $("#user_info_button_remove").click(function(){
 	   $.removeCookie("id");
 	   localStorage.removeItem(user_info.id);
