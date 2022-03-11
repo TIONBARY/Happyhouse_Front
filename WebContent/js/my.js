@@ -58,5 +58,24 @@ $(document).ready(function(){
          }
       });
    });
+
+   $("#regist").click(function(){
+	   let id = $("#id").val();
+	   let password = $("#password").val();
+	   let name = $("#name").val();
+	   let email = $("#email").val();
+	   let age = $("#age").val();
+	   
+	   const user  = {
+			      id: id,
+			      password: password,
+			      name: name,
+			      email: email,
+			      age: age,
+	   };
+	   
+	   localStorage.setItem(name, JSON.stringify(user));
+	   alert("회원가입 완료");
+   });
    
 });
