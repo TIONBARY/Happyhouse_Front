@@ -45,21 +45,22 @@ $(document).ready(function(){
    });
    $("#loginBtn").click(function() {
       const id = $("#id").val();
-      const pw = $("#pw").val();
+      const pw = $("#password").val();
       
       $.post("main", {id, pw, sign: "login"}, function(data){
-         //const user = JSON.parse(document.cookie);
-         console.log(data);
          let obj = JSON.parse(data);
-         console.log(obj);
-         if(obj.id){
+         let user = JSON.parse(localStorage.getItem(id));
+         if(obj.id == user.id && obj.pw == user.password){
             $.cookie("id", obj.id);
+            location.href="index.html";
             $("#loginSpan").html(id +"<button id ='logoutBtn'>logout</button>")
+         }else{
+        	 alert("로그인 정보를 다시 입력해주세요.");
          }
       });
    });
 
-   $("#regist").click(function(){
+   $("#registBtn").click(function(){
 	   let id = $("#id").val();
 	   let password = $("#password").val();
 	   let name = $("#name").val();
@@ -74,7 +75,7 @@ $(document).ready(function(){
 			      age: age,
 	   };
 	   
-	   localStorage.setItem(name, JSON.stringify(user));
+	   localStorage.setItem(id, JSON.stringify(user));
 	   alert("회원가입 완료");
    });
    
