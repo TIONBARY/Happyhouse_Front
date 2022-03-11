@@ -35,7 +35,7 @@ public class mainServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("id", id);
 				
-				out.print("{\"id\":\""+id+"\"}");
+				out.print("{\"id\":\""+id+"\", \"pw\":\""+pw+"\"}");
 //				out.append("{\"id\":\""+id+"\", \"pw\":\""+pw+"\"}");
 			} else if(sign.equals("logout")) {
 				HttpSession session = request.getSession();
