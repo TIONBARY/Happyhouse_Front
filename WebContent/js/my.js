@@ -32,17 +32,20 @@
 //})
 //
 
+
 $(document).ready(function(){
    const id = $.cookie("id");
    if(id){
-      $("#loginSpan").html(id +"<button id ='logoutBtn'>logout</button>")
+	   $("#loginSpan").html(id +"<button id ='logoutBtn'>logout</button>")
    }
+   
    $(document).on("click", "#logoutBtn", function() {
       $.post("main",{sign:"logout"},function(){
          $.removeCookie("id");
          location.reload();
       });
    });
+   
    $("#loginBtn").click(function() {
       const id = $("#id").val();
       const pw = $("#password").val();
@@ -59,7 +62,7 @@ $(document).ready(function(){
          }
       });
    });
-
+   
    $("#registBtn").click(function(){
 	   let id = $("#id").val();
 	   let password = $("#password").val();
@@ -77,6 +80,19 @@ $(document).ready(function(){
 	   
 	   localStorage.setItem(id, JSON.stringify(user));
 	   alert("회원가입 완료");
+	   location.href="index.html";
    });
+   const user_info=JSON.parse(localStorage.getItem($.cookie("id")));
+   $(".user_info").html("<p>아이디 : <input type=text value="+user_info.id+" id=user_info_id></p>"
+		   +"<p>비밀번호 : <input type=password value="+user_info.password+" id=user_info_id></p>"
+		   +"<p>이름 : <input type=text value="+user_info.name+" id=user_info_id></p>"
+		   +"<p>이메일 : <input type=text value="+user_info.email+" id=user_info_id></p>"
+		   +"<p>나이 : <input type=text value="+user_info.age+" id=user_info_id></p>"
+		   );
+   
+   $("#user_info_button_ok").click(function () {
+      location.href="index.html";
+   })
+   
    
 });
