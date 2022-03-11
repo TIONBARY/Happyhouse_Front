@@ -32,17 +32,20 @@
 //})
 //
 
+
 $(document).ready(function(){
    const id = $.cookie("id");
    if(id){
-      $("#loginSpan").html(id +"<button id ='logoutBtn'>logout</button>")
+	   $("#loginSpan").html(id +"<button id ='logoutBtn'>logout</button>")
    }
+   
    $(document).on("click", "#logoutBtn", function() {
       $.post("main",{sign:"logout"},function(){
          $.removeCookie("id");
          location.reload();
       });
    });
+   
    $("#loginBtn").click(function() {
       const id = $("#id").val();
       const pw = $("#password").val();
@@ -59,7 +62,7 @@ $(document).ready(function(){
          }
       });
    });
-
+   
    $("#registBtn").click(function(){
 	   let id = $("#id").val();
 	   let password = $("#password").val();
@@ -77,6 +80,6 @@ $(document).ready(function(){
 	   
 	   localStorage.setItem(id, JSON.stringify(user));
 	   alert("회원가입 완료");
+	   location.href="index.html";
    });
-   
 });
