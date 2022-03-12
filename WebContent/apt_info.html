@@ -136,10 +136,10 @@
             .each(function () {
               console.log($(this).find("아파트").text() + "---");
               aptlist += `
-                 <p><li><a href="">${$(this).find("아파트").text()}</a></li></p>
+                 <p><li><button value="${$(this).find("아파트").text()}" class="aptlistBtn" id="${$(this).find("아파트").text()}">${$(this).find("아파트").text()}</button></li></p>
                     <p>거래금액 : ${$(this).find("거래금액").text()}만원<br>
                     ${$(this).find("법정동").text()}</p>
-                    `;
+              `;
               //alert(studentlist);
               $("#aptlist").empty().append(aptlist);
               $("p").css("font-weight", "bold");
