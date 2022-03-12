@@ -120,4 +120,10 @@ $(document).ready(function(){
 	   localStorage.removeItem(user_info.id);
 	   location.href="index.html";
    });
+
+   var aptname;
+   $(".aptlistBtn").click(function(){
+	   window.open("detail.html", "poll", "width=420, height=300, top=300, left=400");
+	   aptname = $()
+   });
 });
