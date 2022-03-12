@@ -8,33 +8,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
-        $("#listBtn").click(function () {
-          var ServiceKey =
-            "yQJmbxPKHfbveoouxPQICmXLoAexdytRO17wxg/wLWpCObZ80VVS/7bBYGPtH+K0tLxa5/23tWERGQOow9IV1Q==";
-          var pageNo = "1";
-          var numOfRows = "6000";
-          var LAWD_CD = "11110";
-          var DEAL_YMD = "202012";
-          // server에서 넘어온 data
-          $.ajax({
-            url: "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev",
-            type: "GET",
-            data: {
-              ServiceKey: ServiceKey,
-              pageNo: pageNo,
-              numOfRows: numOfRows,
-              LAWD_CD: LAWD_CD,
-              DEAL_YMD: DEAL_YMD,
-            },
-            dataType: "xml",
-            success: function (response) {
-              console.log(response);
-              makeList(response);
-            },
-            error: function (xhr, status, msg) {
-              console.log("상태값 : " + status + " Http에러메시지 : " + msg);
-            },
-          });
+        var ServiceKey =
+          "yxvdsQAG/HqTUqohKBZWdyImqb+s96N3Swbnur98SgrKd6weQnflf08Y4EwwMybrv6mQsZl+HgqOpzmW88hicA==";
+        var pageNo = "1";
+        var numOfRows = "30";
+        var LAWD_CD = "11110";
+        var DEAL_YMD = "202012";
+        // server에서 넘어온 data
+        $.ajax({
+          url: "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev",
+          type: "GET",
+          data: {
+            ServiceKey: ServiceKey,
+            pageNo: pageNo,
+            numOfRows: numOfRows,
+            LAWD_CD: LAWD_CD,
+            DEAL_YMD: DEAL_YMD,
+          },
+          dataType: "xml",
+          success: function (response) {
+            console.log(response);
+            makeList(response);
+          },
+          error: function (xhr, status, msg) {
+            console.log("상태값 : " + status + " Http에러메시지 : " + msg);
+          },
         });
 
         function makeList(data) {
@@ -42,6 +40,7 @@
           $(data)
             .find("item")
             .each(function () {
+              console.log($(this).find("아파트").text() + "---");
               aptlist += `<tr>
                     <td>${$(this).find("아파트").text()}</td>
                     <td>${$(this).find("거래금액").text()}</td>
