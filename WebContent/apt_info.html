@@ -149,6 +149,13 @@
               $("p").css("font-weight", "bold");
             });
           $("li").css("color", "black").css("font-weight", "bold").css("font-size", "20px");
+          $(".apt_name_href")
+            .css("border-style", "none")
+            .css("color", "white")
+            .css("background-color", "gray")
+            .css("width", "200")
+            .css("height", "60")
+            .css("font-weight", "bold");
         }
 
         // function makeList(data) {
@@ -193,11 +200,10 @@
                   // console.log($(this).find("아파트").text());
                   if (aptname == $(this).find("아파트").text()) {
                     aptlist += `
-                <p><li><button class="apt_name_href" value=${$(this)
-                  .find("아파트")
-                  .text()} id="apt_name" >${$(this).find("아파트").text()}</button></li></p>
+                <p><li><h3>${$(this).find("아파트").text()}</h3></li></p>
                   <p>거래금액 : ${$(this).find("거래금액").text()}만원<br>
-                    ${$(this).find("법정동").text()}</p>
+                    주소 : ${$(this).find("법정동").text()} ${$(this).find("지번").text()}<br>
+                    건축년도 : ${$(this).find("건축년도").text()}년</p>
                     `;
 
                     //alert(studentlist);
@@ -210,10 +216,6 @@
               console.log("상태값 : " + status + " Http에러메시지 : " + msg);
             },
           });
-
-          $("li").css("color", "black").css("font-weight", "bold").css("font-size", "20px");
-          console.log(a);
-          window.open("detail.html", "_blank", "width=800, height=600");
         });
       }
     </script>
