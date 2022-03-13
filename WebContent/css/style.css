@@ -510,3 +510,9 @@
   float: left;
   margin-left: 80px;
 }
+
+#logoutBtn {
+  margin-left: 5px;
+  background-color: #00b98e;
+  color: white;
+}
