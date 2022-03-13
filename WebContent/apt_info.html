@@ -38,6 +38,7 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
     <script>
+      var aptname;
       function changeSelect1() {
         const e = document.getElementById("dosi");
         const selectValue = e.options[e.selectedIndex].value;
@@ -134,18 +135,47 @@
           $(data)
             .find("item")
             .each(function () {
-              console.log($(this).find("아파트").text() + "---");
+              // console.log($(this).find("아파트").text());
               aptlist += `
-                 <p><li><button value="${$(this).find("아파트").text()}" class="aptlistBtn" id="${$(this).find("아파트").text()}">${$(this).find("아파트").text()}</button></li></p>
+                 <p><li><button class="apt_name_href" value=${$(this)
+                   .find("아파트")
+                   .text()} id="apt_name" >${$(this).find("아파트").text()}</button></li></p>
                     <p>거래금액 : ${$(this).find("거래금액").text()}만원<br>
                     ${$(this).find("법정동").text()}</p>
               `;
+
               //alert(studentlist);
               $("#aptlist").empty().append(aptlist);
               $("p").css("font-weight", "bold");
             });
           $("li").css("color", "black").css("font-weight", "bold").css("font-size", "20px");
         }
+
+        // function makeList(data) {
+        //   var aptlist = ``;
+        //   $(data)
+        //     .find("item")
+        //     .each(function () {
+        //       console.log($(this).find("아파트").text() + "---");
+        //       aptlist += `
+        //          <p><li><button value="${$(this).find("아파트").text()}" class="aptlistBtn" id="${$(this).find("아파트").text()}">${$(this).find("아파트").text()}</button></li></p>
+        //             <p>거래금액 : ${$(this).find("거래금액").text()}만원<br>
+        //             ${$(this).find("법정동").text()}</p>
+        //       `;
+        //       //alert(studentlist);
+        //       $("#aptlist").empty().append(aptlist);
+        //       $("p").css("font-weight", "bold");
+        //     });
+        //   $("li").css("color", "black").css("font-weight", "bold").css("font-size", "20px");
+        // }
+        $(document).on("click", ".apt_name_href", function () {
+          aptname = this.value;
+          const aptN = {
+            aptname: aptname,
+          };
+          console.log(aptN);
+          window.open("detail.html", "_blank", "width=800, height=600");
+        });
       }
     </script>
   </head>
@@ -247,8 +277,8 @@
         <!-- 좌측 아파트 목록 -->
         <ul>
           <h1>아파트 목록</h1>
-          <div style="border:1px solid black;width:300px;height:400px;overflow:scroll;">
-          	<p id="aptlist"></p>
+          <div style="border: 1px solid black; width: 300px; height: 400px; overflow: scroll">
+            <p id="aptlist"></p>
           </div>
         </ul>
       </div>
