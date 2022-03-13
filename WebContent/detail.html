@@ -14,7 +14,8 @@
   <script>
     $(document).ready(function () {
       $.get("apt_info.html", function (data) {
-        console.log(data);
+        $("p").html(data);
+        console.log(aptname);
       });
     });
   </script>
