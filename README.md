@@ -8,7 +8,10 @@ pair1
 
 
 ## 구조
-
+| HTML | header |
+| ------ | ------ |
+| index.html | cell |
+| Regist.html | cell |
 
 
 ## 결과화면
