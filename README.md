@@ -15,7 +15,7 @@ pair1
 
 ## 결과화면
 <h4>- 메인페이지<br/><h4/>
-![image info](e3bdb2301529640c21f35e7662d6633fe1c40852)
+![image info](./resultimg/메인페이지.PNG)
 <h4>- 동으로 조회한 경우<br/><h4/>
 ![image info](./02.PNG)
 <h4>- 아파트 명으로 조회한 경우<br/><h4/>
