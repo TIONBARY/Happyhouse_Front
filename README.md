@@ -44,6 +44,19 @@ pair1
 | ------ | ------ |
 | index.html | 메인페이지 |
 | Regist.html | 회원가입페이지 |
+| Login.html | 로그인페이지 |
+| user.info.html | 회원정보페이지 |
+| apr_info.html | 아파트정보페이지 |
+
+| JavaScript |  |
+| ------ | ------ |
+| main.js | 부트스트랩 JS |
+| my.js | 직접 코딩한 JS |
+
+| CSS |  |
+| ------ | ------ |
+| bootstrap.min.css | 부트스트랩 CSS |
+| style.css | 직접 코딩한 CSS |
 
 
 ## 결과화면
