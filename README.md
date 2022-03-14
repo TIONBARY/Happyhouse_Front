@@ -11,7 +11,6 @@ pair1
         <th>구현 여부</th>
       </tr>
     </thead>
-    <tbody>
            <tr>
         <td align="center">메인페이지 및 메뉴 구성</td>
         <td align="center">○</td>
@@ -37,7 +36,6 @@ pair1
         <td align="center">○</td>
       </tr>
       
-    </tbody>
   </table>
 
 
