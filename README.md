@@ -11,8 +11,6 @@ pair1
 
 
 
-## Class Dependencies
-
 
 
 ## 결과화면
