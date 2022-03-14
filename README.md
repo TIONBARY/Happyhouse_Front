@@ -36,4 +36,3 @@ pair1
 ![image info](resultimg/아파트시세목록.png)
 <h4>- 아파트 상세 정보 조회<br/><h4/>
 ![image info](resultimg/아파트상세정보.png)
-| MarketServiceImpl        |![image info](./srcimg/MarketServiceImpl.PNG)|
