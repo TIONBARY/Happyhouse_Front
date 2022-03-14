@@ -4,7 +4,41 @@ pair1
 김시언 김성진
 
 ## 요구사항
-
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>구현 기능</th>
+        <th>구현 여부</th>
+      </tr>
+    </thead>
+    <tbody>
+           <tr>
+        <td align="center">메인페이지 및 메뉴 구성</td>
+        <td align="center">○</td>
+      </tr>
+            <tr>
+        <td align="center">회원페이지</td>
+        <td align="center">○</td>
+      </tr>
+            <tr>
+        <td align="center">로그인/로그아웃 페이지</td>
+        <td align="center">○</td>
+      </tr>
+            <tr>
+        <td align="center">실거래가 조회, 결과 페이지</td>
+        <td align="center">○</td>
+      </tr>
+            <tr>
+        <td align="center">화면 별 javascript기능</td>
+        <td align="center">○</td>
+      </tr>
+            <tr>
+        <td align="center">비밀번호 찾기/메뉴구성 화면</td>
+        <td align="center">○</td>
+      </tr>
+      
+    </tbody>
+  </table>
 
 
 ## 구조
