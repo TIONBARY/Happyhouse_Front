@@ -18,7 +18,7 @@ $(document).ready(function () {
 		$.post("main", { id, pw, sign: "login" }, function (data) {
 			if(data=="ok"){
 				$.cookie("id", id);
-				location.reload();
+				location.href = "index.jsp";
 			}
 		});
 	});
