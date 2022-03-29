@@ -2,6 +2,6 @@ package web.dao;
 
 import javax.sql.DataSource;
 
-public class MemberDAO {
+public class UserDAO {
 	DataSource ds;
 }

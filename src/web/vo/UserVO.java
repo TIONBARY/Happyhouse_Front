@@ -1,9 +1,9 @@
 package web.vo;
 
-public class MemberVO {
+public class UserVO {
 	String id,pw,name,email, prefer;
 	int age;
-	public MemberVO(String id, String pw, String name, String email, int age) {
+	public UserVO(String id, String pw, String name, String email, int age) {
 		setId(id);
 		setPw(pw);
 		setName(name);
