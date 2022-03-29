@@ -28,7 +28,7 @@ public class UserDAO {
 		try {
 			Context ic = new InitialContext();
 			Context ic2 = (Context)ic.lookup("java:comp/env");
-			ds = (DataSource)ic2.lookup("ssafy");
+			ds = (DataSource)ic2.lookup("pjtDB");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -68,16 +68,16 @@ public class UserDAO {
 			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new MyException("로그인 실패");
+			throw new MyException("login 실패");
 		}
 	}
-
-	public UserVO userInfo(String id) throws MyException{
+	
+	public UserVO userInfo(String name) throws MyException{
 		try(Connection con = ds.getConnection()){
 			UserVO userVO = new UserVO();
-			String sql = "select id, pw, email, name, age from user where id=?";
+			String sql = "select id, pw, email, name, age from user where name=?";
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(1, id);
+			stmt.setString(1, name);
 			
 			ResultSet rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -92,33 +92,7 @@ public class UserDAO {
 			return null;
 		} catch(Exception e) {
 			e.printStackTrace();
-			throw new MyException("회원정보 조회 실패");
-		}
-	}
-
-	public void userEdit(UserVO userVO) throws MyException{
-		try(Connection con = ds.getConnection()){
-			String sql = "UPDATE user SET `pw` = '?', `email` = '?', `name` = '?', `age` = '?' WHERE (`id` = '?')";
-			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setString(2, userVO.getPw());
-			stmt.setString(5, userVO.getId());
-			
-			ResultSet rs = stmt.executeQuery();
-			if(rs.next()) {
-				userVO.setId(rs.getString("id"));
-				userVO.setPw(rs.getString("pw"));
-				userVO.setEmail(rs.getString("email"));
-				userVO.setName(rs.getString("name"));
-				userVO.setAge(Integer.parseInt(rs.getString("age")));
-				System.out.println(userVO);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
 			throw new MyException("login 실패");
 		}
-		
-		
 	}
-	
-	
 }
