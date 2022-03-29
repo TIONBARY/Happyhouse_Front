@@ -15,7 +15,12 @@ import web.util.MyException;
 import web.vo.UserVO;
 
 public class mainServlet extends HttpServlet {
-UserDAO userDAO;
+	UserDAO userDAO;
+	
+	@Override
+	public void init() throws ServletException {
+		userDAO = UserDAO.getInstance();
+	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -80,6 +85,17 @@ UserDAO userDAO;
 				} catch (MyException e) {
 					e.printStackTrace();
 				}
+			}else if(sign.equals("useredit")) {
+				String id = request.getParameter("user_info_id");
+				String pw = request.getParameter("user_info_pw");
+				String name = request.getParameter("user_info_name");
+				String email = request.getParameter("user_info_email");
+				String age = request.getParameter("user_info_age");
+				
+				UserVO userVO = new UserVO(id, pw, name, email, Integer.parseInt(age));
+				
+				userDAO.userEdit(userVO);
+				
 			}
 		} else {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

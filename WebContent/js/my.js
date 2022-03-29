@@ -53,19 +53,16 @@ $(document).ready(function () {
 	});
 
 	$("#user_info_button_edit").click(function () {
-		let id = $("#user_info_id").val();
-		let password = $("#user_info_password").val();
-		let name = $("#user_info_name").val();
-		let email = $("#user_info_email").val();
-		let age = $("#user_info_age").val();
+		alert("수정");
+		let user_info_id = $("#user_info_id").val();
+		let user_info_password = $("#user_info_password").val();
+		let user_info_name = $("#user_info_name").val();
+		let user_info_email = $("#user_info_email").val();
+		let user_info_age = $("#user_info_age").val();
 
-		const user = {
-				id: id,
-				password: password,
-				name: name,
-				email: email,
-				age: age,
-		};
+		$.post("main",{user_info_id,user_info_password,user_info_name,user_info_email,user_info_age,sign:"useredit"},function(){
+			alert("post");
+		})
 
 		localStorage.setItem(id, JSON.stringify(user));
 		alert("회원정보 수정");
