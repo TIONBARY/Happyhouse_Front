@@ -59,6 +59,8 @@ UserDAO userDAO;
 					out.append(e.getMessage());
 					e.printStackTrace();
 				}
+			}else if(sign.equals("logout")) {
+				
 			}
 		} else {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
