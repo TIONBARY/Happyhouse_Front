@@ -28,7 +28,7 @@ public class UserDAO {
 		try {
 			Context ic = new InitialContext();
 			Context ic2 = (Context)ic.lookup("java:comp/env");
-			ds = (DataSource)ic2.lookup("pjtDB");
+			ds = (DataSource)ic2.lookup("ssafy");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}

@@ -14,17 +14,6 @@ import web.util.MyException;
 import web.vo.UserVO;
 
 public class UserRegistController implements Controller{
-//	private static MemberInsertController instance;
-//	
-//	private MemberInsertController() {}
-//
-//	public static MemberInsertController getInstance() {
-//		if(instance==null) {
-//			instance = new MemberInsertController();
-//		}
-//		return instance;
-//	}
-	
 	@Override
 	public void execute(HttpServletRequest request,HttpServletResponse response) throws MyException, IOException, ServletException {
 		response.setContentType("text/html;charset=utf-8");

@@ -1,27 +1,32 @@
 $(document).ready(function () {
-	const id = $.cookie("id");
-	if (id) {
-		$("#loginSpan").html(id + "<button id ='logoutBtn'>logout</button>");
+	const name = $.cookie("name");
+	if (name) {
+		$("#loginSpan").html(name + "<button id ='logoutBtn'>logout</button>");
 		$("#userinfo").click(function(){
-			$.post("main",{id,sign:"userinfo"},function(data){
+			$.post("main",{name, sign:"userinfo"},function(data){
 			})
 		})
 	}
 
 	$(document).on("click", "#logoutBtn", function () {
 		$.post("main", { sign: "logout" }, function () {
-			$.removeCookie("id");
+			$.removeCookie("name");
 			location.reload();
 		});
 	});
 
-	$("#loginBtn").click(function () {
+	$("#loginBtn").click(function(){
 		const id = $("#id").val();
 		const pw = $("#pw").val();
-
-		$.post("main", { id, pw, sign: "login" }, function (data) {
-			if(data=="ok"){
-				$.cookie("id", id);
+		
+		$.post("main",{id,pw,sign:"login"},function(data){
+			data=JSON.parse(data);
+			console.log(data);
+			
+			if(data.msg){
+				alert(data.msg);
+			}else if(data.name){
+				$.cookie("name",data.name);
 				location.href = "index.jsp";
 			}
 		});
@@ -42,9 +47,13 @@ $(document).ready(function () {
 		let age = $("#age").val();
 		
 		$.post("main", { id, password, name, email, age, sign: "regist" }, function (data) {
-			if(data=="ok"){
-				location.href = "index.jsp";
+			console.log(data);
+			data = JSON.parse(data);
+			console.log(data);
+			if(data.msg){
+				alert(data.msg);
 			}
+			location.href = "index.jsp";
 		});
 	});
 
@@ -53,16 +62,19 @@ $(document).ready(function () {
 	});
 
 	$("#user_info_button_edit").click(function () {
-		alert("수정");
-		let user_info_id = $("#user_info_id").val();
-		let user_info_password = $("#user_info_password").val();
-		let user_info_name = $("#user_info_name").val();
-		let user_info_email = $("#user_info_email").val();
-		let user_info_age = $("#user_info_age").val();
+		let id = $("#user_info_id").val();
+		let password = $("#user_info_password").val();
+		let name = $("#user_info_name").val();
+		let email = $("#user_info_email").val();
+		let age = $("#user_info_age").val();
 
-		$.post("main",{user_info_id,user_info_password,user_info_name,user_info_email,user_info_age,sign:"useredit"},function(){
-			alert("post");
-		})
+		const user = {
+				id: id,
+				password: password,
+				name: name,
+				email: email,
+				age: age,
+		};
 
 		localStorage.setItem(id, JSON.stringify(user));
 		alert("회원정보 수정");
@@ -70,15 +82,9 @@ $(document).ready(function () {
 	});
 	
 	$("#user_info_button_remove").click(function () {
-		alert(user_info.id + "님 회원탈퇴하셨습니다.");
 		$.removeCookie("id");
-		localStorage.removeItem(user_info.id);
+		
+		alert(user_info.id + "님 회원탈퇴하셨습니다.");
 		location.href = "index.jsp";
-	});
-
-	var aptname;
-	$(".aptlistBtn").click(function () {
-		window.open("detail.html", "poll", "width=420, height=300, top=300, left=400");
-		aptname = $();
 	});
 });

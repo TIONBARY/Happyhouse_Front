@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="login" class="web.controller.LoginController"></bean>
+	<bean id="regist" class="web.controller.UserRegistController"></bean>
+	<bean id="logout" class="web.controller.LogoutController"></bean>
+	<bean id="userinfo" class="web.controller.UserInfoController"></bean>
+</beans>
