@@ -2,7 +2,7 @@
     <wb-module deploy-name="0310_HaapyHouse">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="0310_HaapyHouse"/>
         <property name="java-output-path" value="/0310_HaapyHouse/build/classes"/>
+        <property name="context-root" value="0310_HaapyHouse"/>
     </wb-module>
 </project-modules>
