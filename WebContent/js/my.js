@@ -1,128 +1,83 @@
-//$(document).ready(function(){
-//   const id = $.cookie("id");
-//   if(id){
-//      $("#loginSpan").html( user.id+"님 접속" +"<button id='logoutBtn'>logout</button>");
-//   }
-//
-//   $("#loginBtn").click(function () {
-//      const id = $("#id").val();
-//      const pw = $("#pw").val();
-//      $.post("http://localhost:8080/0310_HaapyHouse/main", { id, pw, sign:"login" }, function (data) {
-//         const user = JSON.parse(data);
-//         if(user.id){
-//            $.cookie("id",user.id)
-//         }
-////         if(user.id=="ssafy"&& user.pw=="1234"){
-////            alert("로그인 성공");
-////             $('#loginSpan').html( user.id+"님 접속" +"<button id='logoutBtn'>logout</button>");
-////         } else if(user.id!="ssafy"){
-////            alert("아이디가 잘 못 되었습니다.");
-////            location.reload();
-////         } else{
-////            alert("비밀번호가 잘 못 되었습니다.");
-////            location.reload();
-////         }
-//         });
-//   })
-//
-//   $(document).on("click","#logoutBtn",function(){
-//      alert("로그아웃!");
-//      location.reload();
-//   })
-//})
-//
-
 $(document).ready(function () {
-  const id = $.cookie("id");
-  if (id) {
-    $("#loginSpan").html(id + "<button id ='logoutBtn'>logout</button>");
-  }
+	const id = $.cookie("id");
+	if (id) {
+		$("#loginSpan").html(id + "<button id ='logoutBtn'>logout</button>");
+	}
 
-  $(document).on("click", "#logoutBtn", function () {
-    $.post("main", { sign: "logout" }, function () {
-      $.removeCookie("id");
-      location.reload();
-    });
-  });
+	$(document).on("click", "#logoutBtn", function () {
+		$.post("main", { sign: "logout" }, function () {
+			$.removeCookie("id");
+			location.reload();
+		});
+	});
 
-  $("#loginBtn").click(function () {
-    const id = $("#id").val();
-    const pw = $("#password").val();
+	$("#loginBtn").click(function () {
+		const id = $("#id").val();
+		const pw = $("#pw").val();
 
-    $.post("main", { id, pw, sign: "login" }, function (data) {
-      let obj = JSON.parse(data);
-      let user = JSON.parse(localStorage.getItem(id));
-      if (obj.id == user.id && obj.pw == user.password) {
-        $.cookie("id", obj.id);
-        location.href = "index.html";
-        $("#loginSpan").html(id + "<button id ='logoutBtn'>logout</button>");
-      } else {
-        alert("로그인 정보를 다시 입력해주세요.");
-      }
-    });
-  });
+		$.post("main", { id, pw, sign: "login" }, function (data) {
+			if(data=="ok"){
+				$.cookie("id", id);
+				location.reload();
+			}
+		});
+	});
+	
+	$("#findPw").click(function () {
+		let id = $("#id").val();
+		let user = JSON.parse(localStorage.getItem(id));
 
-  $("#findPw").click(function () {
-    let id = $("#id").val();
-    let user = JSON.parse(localStorage.getItem(id));
+		alert("비밀번호는 " + user.password + "입니다.");
+	});
 
-    alert("비밀번호는 " + user.password + "입니다.");
-  });
+	$("#registBtn").click(function () {
+		let id = $("#id").val();
+		let password = $("#password").val();
+		let name = $("#name").val();
+		let email = $("#email").val();
+		let age = $("#age").val();
+		
+		$.post("main", { id, password, name, email, age, sign: "regist" }, function (data) {
+			if(data=="ok"){
+				location.href = "index.jsp";
+			}
+		});
+	});
 
-  $("#registBtn").click(function () {
-    let id = $("#id").val();
-    let password = $("#password").val();
-    let name = $("#name").val();
-    let email = $("#email").val();
-    let age = $("#age").val();
+	$("#user_info_button_ok").click(function () {
+		location.href = "index.jsp";
+	});
 
-    const user = {
-      id: id,
-      password: password,
-      name: name,
-      email: email,
-      age: age,
-    };
+	$("#user_info_button_edit").click(function () {
+		let id = $("#user_info_id").val();
+		let password = $("#user_info_password").val();
+		let name = $("#user_info_name").val();
+		let email = $("#user_info_email").val();
+		let age = $("#user_info_age").val();
 
-    localStorage.setItem(id, JSON.stringify(user));
-    alert("회원가입 완료");
-    location.href = "index.html";
-  });
+		const user = {
+				id: id,
+				password: password,
+				name: name,
+				email: email,
+				age: age,
+		};
 
-  $("#user_info_button_ok").click(function () {
-    location.href = "index.html";
-  });
+		localStorage.setItem(id, JSON.stringify(user));
+		alert("회원정보 수정");
+		location.href = "index.jsp";
+	});
+	
+	$("#user_info_button_remove").click(function () {
+		alert(user_info.id + "님 회원탈퇴하셨습니다.");
+		$.removeCookie("id");
+		localStorage.removeItem(user_info.id);
+		location.href = "index.jsp";
+	});
 
-  $("#user_info_button_edit").click(function () {
-    let id = $("#user_info_id").val();
-    let password = $("#user_info_password").val();
-    let name = $("#user_info_name").val();
-    let email = $("#user_info_email").val();
-    let age = $("#user_info_age").val();
-
-    const user = {
-      id: id,
-      password: password,
-      name: name,
-      email: email,
-      age: age,
-    };
-
-    localStorage.setItem(id, JSON.stringify(user));
-    alert("회원정보 수정");
-    location.href = "index.html";
-  });
-
-  $("#user_info_button_remove").click(function () {
-    alert(user_info.id + "님 회원탈퇴하셨습니다.");
-    $.removeCookie("id");
-    localStorage.removeItem(user_info.id);
-    location.href = "index.html";
-  });
-
-  var aptname;
-  $(".aptlistBtn").click(function () {
-    window.open("detail.html", "poll", "width=420, height=300, top=300, left=400");
-    aptname = $();
-  });
+	var aptname;
+	$(".aptlistBtn").click(function () {
+		window.open("detail.html", "poll", "width=420, height=300, top=300, left=400");
+		aptname = $();
+	});
 });

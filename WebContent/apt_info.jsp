@@ -83,8 +83,7 @@
 						<div class="col-md-10">
 							<div class="row g-2">
 								<div class="col-md-4">
-									<select class="form-select border-0 py-3" id="dosi"
-										onchange="changeSelect1()">
+									<select class="form-select border-0 py-3" id="dosi">
 										<option selected>시/도</option>
 										<option value="서울특별시">서울특별시</option>
 										<option value="부산광역시">부산광역시</option>
@@ -105,8 +104,7 @@
 									</select>
 								</div>
 								<div class="col-md-4">
-									<select class="form-select border-0 py-3" id="sigu"
-										onchange="changeSelect2()">
+									<select class="form-select border-0 py-3" id="sigu">
 										<option selected>시/구</option>
 									</select>
 								</div>

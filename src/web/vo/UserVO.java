@@ -1,8 +1,9 @@
 package web.vo;
 
 public class UserVO {
-	String id,pw,name,email, prefer;
-	int age;
+	private String id,pw,name,email, prefer;
+	private int age;
+	
 	public UserVO(String id, String pw, String name, String email, int age) {
 		setId(id);
 		setPw(pw);
@@ -10,6 +11,12 @@ public class UserVO {
 		setEmail(email);
 		setAge(age);
 	}
+	
+	public UserVO(String id, String pwd) {
+		setId(id);
+		setPw(pwd);
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -57,13 +64,4 @@ public class UserVO {
 		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", prefer=" + prefer
 				+ ", age=" + age + "]";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

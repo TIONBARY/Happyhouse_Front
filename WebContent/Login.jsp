@@ -60,7 +60,7 @@
 		<div class="form">
 			<form name="login-form" class="login-form">
 				<input id="id" name="id" type="text" placeholder="ID" /> <input
-					id="password" name="password" type="password"
+					id="pw" name="pw" type="password"
 					placeholder="password" />
 				<button id="loginBtn" type="button">로그인</button>
 				<button id="findPw" type="button">비밀번호 찾기</button>
