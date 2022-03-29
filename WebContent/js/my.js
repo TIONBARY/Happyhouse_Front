@@ -2,6 +2,10 @@ $(document).ready(function () {
 	const id = $.cookie("id");
 	if (id) {
 		$("#loginSpan").html(id + "<button id ='logoutBtn'>logout</button>");
+		$("#userinfo").click(function(){
+			$.post("main",{id,sign:"userinfo"},function(data){
+			})
+		})
 	}
 
 	$(document).on("click", "#logoutBtn", function () {

@@ -28,7 +28,7 @@ public class UserDAO {
 		try {
 			Context ic = new InitialContext();
 			Context ic2 = (Context)ic.lookup("java:comp/env");
-			ds = (DataSource)ic2.lookup("pjtDB");
+			ds = (DataSource)ic2.lookup("ssafy");
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -71,4 +71,30 @@ public class UserDAO {
 			throw new MyException("login 실패");
 		}
 	}
+
+	public UserVO userInfo(String id) throws MyException{
+		try(Connection con = ds.getConnection()){
+			UserVO userVO = new UserVO();
+			String sql = "select id, pw, email, name, age from user where id=?";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setString(1, id);
+			
+			ResultSet rs = stmt.executeQuery();
+			if(rs.next()) {
+				userVO.setId(rs.getString("id"));
+				userVO.setPw(rs.getString("pw"));
+				userVO.setEmail(rs.getString("email"));
+				userVO.setName(rs.getString("name"));
+				userVO.setAge(Integer.parseInt(rs.getString("age")));
+				System.out.println(userVO);
+				return userVO;
+			}
+			return null;
+		} catch(Exception e) {
+			e.printStackTrace();
+			throw new MyException("login 실패");
+		}
+	}
+	
+	
 }

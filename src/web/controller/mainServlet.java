@@ -3,6 +3,7 @@ package web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -61,6 +62,24 @@ UserDAO userDAO;
 				}
 			}else if(sign.equals("logout")) {
 				
+			}else if(sign.equals("userinfo")) {
+				String id = request.getParameter("id");
+				try {
+					userDAO = UserDAO.getInstance();
+					UserVO userVO = userDAO.userInfo(id);
+					if(userVO!=null) {
+						HttpSession session = request.getSession();
+						session.setAttribute("userid", userVO.getId());
+						session.setAttribute("userpw", userVO.getPw());
+						session.setAttribute("useremail", userVO.getEmail());
+						session.setAttribute("username", userVO.getName());
+						session.setAttribute("userage", userVO.getAge()+"");
+						RequestDispatcher disp = request.getRequestDispatcher("user_info.jsp");
+						disp.forward(request, response);
+					}
+				} catch (MyException e) {
+					e.printStackTrace();
+				}
 			}
 		} else {
 			request.getRequestDispatcher("/index.jsp").forward(request, response);

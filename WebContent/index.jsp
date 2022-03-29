@@ -75,7 +75,7 @@
 							href="apt_info.jsp" class="nav-item nav-link">아파트 시세</a> <a
 							href="" class="nav-item nav-link">관심 지역 설정</a> <a href=""
 							class="nav-item nav-link">관심 지역 둘러보기</a> <a href="user_info.jsp"
-							class="nav-item nav-link">회원정보</a>
+							class="nav-item nav-link" id="userinfo">회원정보</a>
 					</div>
 				</div>
 			</nav>

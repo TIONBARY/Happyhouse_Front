@@ -4,6 +4,12 @@ public class UserVO {
 	private String id,pw,name,email, prefer;
 	private int age;
 	
+	
+	
+	public UserVO() {
+		super();
+	}
+
 	public UserVO(String id, String pw, String name, String email, int age) {
 		setId(id);
 		setPw(pw);
@@ -61,7 +67,7 @@ public class UserVO {
 	}
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", prefer=" + prefer
+		return "UserVO [id=" + id + ", pw=" + pw + ", name=" + name + ", email=" + email + ", prefer=" + prefer
 				+ ", age=" + age + "]";
 	}
 }
