@@ -1,6 +1,7 @@
 $(document).ready(function() {
       var aptname;
-      function changeSelect1() {
+      
+      $("#dosi").click(function(){
         const e = document.getElementById("dosi");
         const selectValue = e.options[e.selectedIndex].value;
 
@@ -15,7 +16,7 @@ $(document).ready(function() {
                     code +
                     "*000000",
                   function (data2) {
-                    //console.log(data2);
+                    console.log(data2);
                     localStorage.setItem("siguArr", JSON.stringify(data2));
                     let sigu = "";
                     $.each(data2.regcodes, function (index2, item2) {
@@ -30,9 +31,9 @@ $(document).ready(function() {
             });
           }
         );
-      }
+      });
 
-      function changeSelect2() {
+      $("#sigu").click(function () {
         const e = document.getElementById("sigu");
         const selectValue = e.options[e.selectedIndex].value;
 
@@ -58,7 +59,7 @@ $(document).ready(function() {
             );
           }
         });
-      }
+      });
 
       $("#searchBtn").click(function(){
         const e = document.getElementById("dong");
